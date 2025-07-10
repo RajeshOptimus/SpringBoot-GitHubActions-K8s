@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-microservice
+  labels:
+    app: spring-boot-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-boot-microservice
+  template:
+    metadata:
+      labels:
+        app: spring-boot-microservice
+    spec:
+      containers:
+      - name: spring-boot-microservice
+        image: <your-dockerhub-username>/spring-boot-microservice:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
