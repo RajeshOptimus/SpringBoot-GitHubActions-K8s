@@ -90,7 +90,3 @@ Access the application at `http://<your-kubernetes-service-ip>:<port>/greeting` 
 ### CI/CD
 
 The CI/CD pipeline is defined in `.github/workflows/ci-cd.yml` and will automatically build, test, and deploy the application on every commit to the main branch.
-
-## License
-
-This project is licensed under the MIT License.
