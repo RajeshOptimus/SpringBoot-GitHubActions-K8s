@@ -27,7 +27,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t rajeshrajatv/SpringBoot-GitHubActions-K8s:latest .
+          docker build -t rajeshrajatv/springboot-githubactions-k8s:latest .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
@@ -37,7 +37,7 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push rajeshrajatv/spring-boot-microservice:latest
+          docker push rajeshrajatv/springboot-githubactions-k8s:latest
 
       - name: Deploy to Kubernetes
         run: |
