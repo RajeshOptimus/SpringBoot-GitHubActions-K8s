@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - gitaction
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t your-dockerhub-username/spring-boot-microservice:latest .
+          docker build -t your-dockerhub-username/SpringBoot-GitHubActions-K8s:latest .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
