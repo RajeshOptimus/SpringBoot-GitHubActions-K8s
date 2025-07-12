@@ -1,24 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-microservice
+  name: greeting-deployment
   labels:
-    app: spring-boot-microservice
+    app: greeting
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: spring-boot-microservice
+      app: greeting
   template:
     metadata:
       labels:
-        app: spring-boot-microservice
+        app: greeting
     spec:
       containers:
-      - name: spring-boot-microservice
-        image: <your-dockerhub-username>/spring-boot-microservice:latest
-        ports:
-        - containerPort: 8080
-        env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: "prod"
+        - name: greeting-container
+          image: rajeshrajatv/springboot-githubactions-k8s:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+          imagePullPolicy: Always
