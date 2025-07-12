@@ -1,5 +1,6 @@
 #!/bin/bash
-
+echo "$(date): Script triggered" >> /c/Users/rajes/deploy-log.txt
+echo "$(date): Redeploying greeting-deployment..." >> /c/Users/rajes/deploy-log.txt
 IMAGE_NAME="rajeshrajatv/springboot-githubactions-k8s"
 LAST_DIGEST_FILE=".last_digest"
 
