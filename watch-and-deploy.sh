@@ -33,4 +33,8 @@ if [[ "$NEW_DIGEST" != "$LAST_DIGEST" && -n "$NEW_DIGEST" ]]; then
 
   echo "$(date): Redeploy complete." >> "$LOG_FILE"
 else
-  echo "$(date): No new image. Skipping redeploy." >> "$LOG
+  echo "$(date): No new image. Skipping redeploy." >> "$LOG_FILE"
+fi
+
+# Log current pod status
+kubectl get pods >> "$LOG_FILE" 2>&1
