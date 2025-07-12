@@ -1,6 +1,5 @@
 #!/bin/bash
 
-LOG_FILE="/c/Users/rajes/deploy-log.txt"
 IMAGE_NAME="rajeshrajatv/springboot-githubactions-k8s"
 LAST_DIGEST_FILE="/c/Users/rajes/.last_digest"
 
