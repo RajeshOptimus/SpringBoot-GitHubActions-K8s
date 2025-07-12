@@ -38,8 +38,3 @@ jobs:
       - name: Push Docker image
         run: |
           docker push rajeshrajatv/springboot-githubactions-k8s:latest
-
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
