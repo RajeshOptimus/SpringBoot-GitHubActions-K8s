@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "Starting Minikube..."
-minikube start --driver=docker
+echo "Starting Minikube with VirtualBox driver..."
+minikube start --driver=virtualbox
 
 echo "Deploying to Kubernetes..."
 kubectl apply -f k8s/deployment.yaml
