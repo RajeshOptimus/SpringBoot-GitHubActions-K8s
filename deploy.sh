@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting Minikube..."
+echo "Starting Minikube with VirtualBox driver..."
 minikube start --driver=docker
 
 echo "Deploying to Kubernetes..."
