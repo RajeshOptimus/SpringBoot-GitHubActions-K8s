@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: greeting-container
-          image: ${IMAGE_NAME}:${IMAGE_TAG}
+          image: rajeshrajatv/springboot-githubactions-k8s:latest
           ports:
             - containerPort: 8080
           env:
@@ -25,8 +25,8 @@ spec:
           imagePullPolicy: Always
           volumeMounts:
             - name: jar-volume
-              mountPath: /app/data  # Path inside the container
+              mountPath: /app/data
       volumes:
         - name: jar-volume
           persistentVolumeClaim:
-            claimName: jar-pvc  # This PVC must be created before deploying
+            claimName: jar-pvc
