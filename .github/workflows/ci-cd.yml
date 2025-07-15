@@ -9,7 +9,7 @@ on:
 jobs:
   build-deploy:
     name: Build and Deploy on FARMINGZILLA
-    runs-on: [self-hosted, windows, x64]  # 👈 Target your runner
+    runs-on: [self-hosted, windows, x64]  # 👈 Target your self-hosted runner
 
     steps:
       - name: Checkout repository
@@ -21,8 +21,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build with Gradle
-        run: .\gradlew.bat build
+      - name: Build with Maven
+        run: mvn clean install 
 
       - name: Docker Build
         run: |
