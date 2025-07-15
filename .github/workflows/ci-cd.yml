@@ -1,40 +1,34 @@
-name: CI/CD Pipeline
+name: CI Build and Deploy
 
 on:
   push:
-    branches:
-      - gitaction
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-deploy:
+    name: Build and Deploy on FARMINGZILLA
+    runs-on: [self-hosted, windows, x64]  # 👈 Target your runner
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - name: Set up Java
+        uses: actions/setup-java@v3
         with:
+          java-version: '17'
           distribution: 'temurin'
-          java-version: '11'
 
-      - name: Build with Maven
-        run: mvn clean package
+      - name: Build with Gradle
+        run: .\gradlew.bat build
 
-      - name: Run tests
-        run: mvn test
-
-      - name: Build Docker image
+      - name: Docker Build
         run: |
-          docker build -t rajeshrajatv/springboot-githubactions-k8s:latest .
+          docker build -t my-app:latest .
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Push Docker image
+      - name: Kubernetes Deploy
         run: |
-          docker push rajeshrajatv/springboot-githubactions-k8s:latest
+          kubectl apply -f k8s\deployment.yaml
+          kubectl apply -f k8s\service.yaml
